@@ -1,0 +1,47 @@
+diff --git a/m4/with_editline.m4 b/m4/with_editline.m4
+index e4e35cc..b98a18d 100644
+--- a/m4/with_editline.m4
++++ b/m4/with_editline.m4
+@@ -69,8 +69,8 @@ AC_DEFUN([PBS_AC_WITH_EDITLINE],
+     AC_MSG_ERROR([editline library not found.])
+   )
+   AC_MSG_RESULT([$editline_dir])
+-  AC_CHECK_LIB([ncurses], [tgetent],
+-    [curses_lib="-lncurses"],
++  AC_CHECK_LIB([tinfo], [tgetent],
++    [curses_lib="-ltinfo"],
+     AC_CHECK_LIB([curses], [tgetent],
+       [curses_lib="-lcurses"],
+       AC_MSG_ERROR([curses library not found.])))
+diff --git a/m4/with_tcl.m4 b/m4/with_tcl.m4
+index 6c349f0..738e848 100644
+--- a/m4/with_tcl.m4
++++ b/m4/with_tcl.m4
+@@ -82,10 +82,10 @@ AC_DEFUN([PBS_AC_WITH_TCL],
+   AC_SUBST(tk_version)
+   AS_IF([test x$TCL_INCLUDE_SPEC = x],
+     # Using developer installed tcl
+-    [tcl_inc="-I$tcl_dir/include"]
+-    [tcl_lib="$tcl_dir/lib/libtcl$TCL_VERSION.a $TCL_LIBS"]
+-    [tk_inc="-I$tcl_dir/include"]
+-    [tk_lib="$tcl_dir/lib/libtcl$TCL_VERSION.a $tcl_dir/lib/libtk$TK_VERSION.a $TK_LIBS"],
++    #[tcl_inc="-I$tcl_dir/include"]
++    #[tcl_lib="$tcl_dir/lib/libtcl$TCL_VERSION.a $TCL_LIBS"]
++    #[tk_inc="-I$tcl_dir/include"]
++    #[tk_lib="$tcl_dir/lib/libtcl$TCL_VERSION.a $tcl_dir/lib/libtk$TK_VERSION.a $TK_LIBS"],
+     # Using system installed tcl
+     [tcl_inc="$TCL_INCLUDE_SPEC"]
+     [tcl_lib="$TCL_LIB_SPEC $TCL_LIBS"]
+diff --git a/src/lib/Libpython/pbs_python_external.c b/src/lib/Libpython/pbs_python_external.c
+index e0c33fc..65462a6 100644
+--- a/src/lib/Libpython/pbs_python_external.c
++++ b/src/lib/Libpython/pbs_python_external.c
+@@ -54,7 +54,7 @@
+ #ifdef PYTHON
+ 
+ #include <pbs_python_private.h> /* private python file  */
+-#include <eval.h>		/* For PyEval_EvalCode  */
++#include <ceval.h>		/* For PyEval_EvalCode  */
+ #include <pythonrun.h>		/* For Py_SetPythonHome */
+ #include <sys/types.h>
+ #include <sys/stat.h>
