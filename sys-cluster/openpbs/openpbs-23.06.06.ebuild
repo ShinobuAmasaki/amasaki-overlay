@@ -1,5 +1,4 @@
-# Copyright 2023 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Amasaki Shinobu
 
 EAPI=8
 
