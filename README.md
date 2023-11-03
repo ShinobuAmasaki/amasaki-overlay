@@ -12,7 +12,7 @@ First, you have to install `app-eselect/eselect-repository`.
 Next, add this repository by `eselect` command.
 
 ```shell
-# eselect repository add amasaki-overlay https://github.com/ShinobuAmasaki/amasaki-overlay.git
+# eselect repository add amasaki-overlay git https://github.com/ShinobuAmasaki/amasaki-overlay.git
 ```
 
 And then, sync your local repos.
