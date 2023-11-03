@@ -73,4 +73,5 @@ src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 	rm -rf ${ED}/usr/unsupported
+	rm -rf ${ED}/usr/bin/mpiexec
 }
