@@ -12,7 +12,7 @@ SRC_URI="https://github.com/openpbs/openpbs/archive/refs/tags/v{$PV}.tar.gz -> $
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="munge crypt syslog ptl cray static-libs +tk"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
