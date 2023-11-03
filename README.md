@@ -24,6 +24,6 @@ And then, sync your local repos.
 
 ### sys-cluster/openpbs
 
-OpenPBS -- An HPC workload manager and job scheduler for desktops, clusters, and clouds.
+[OpenPBS](https://github.com/openpbs/openpbs) -- An HPC workload manager and job scheduler for desktops, clusters, and clouds.
 
 
