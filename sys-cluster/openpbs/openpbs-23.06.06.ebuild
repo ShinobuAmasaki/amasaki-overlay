@@ -70,6 +70,6 @@ src_configure() {
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
-	rm -rf ${ED}/usr/unsupported
-	rm -rf ${ED}/usr/bin/mpiexec
+	rm -rf ${ED}/usr/unsupported || die
+	rm -rf ${ED}/usr/bin/mpiexec || die
 }
