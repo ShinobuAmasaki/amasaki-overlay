@@ -6,18 +6,18 @@ Amasaki Shinobu's Public Overlay for Gentoo Linux.
 First, you have to install `app-eselect/eselect-repository`.
 
 ```shell
-# emerge --ask app-eselect/eselect-repository
+(root) # emerge --ask app-eselect/eselect-repository
 ```
 
 Next, add this repository by `eselect` command.
 
 ```shell
-# eselect repository add amasaki-overlay git https://github.com/ShinobuAmasaki/amasaki-overlay.git
+(root) # eselect repository add amasaki-overlay git https://github.com/ShinobuAmasaki/amasaki-overlay.git
 ```
 
 And then, sync your local repos.
 ```shell
-# emerge --sync
+(root) # emerge --sync
 ```
 
 ## Available Packages
