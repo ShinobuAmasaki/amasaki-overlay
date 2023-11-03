@@ -12,7 +12,8 @@ SRC_URI="https://github.com/openpbs/openpbs/archive/refs/tags/v{$PV}.tar.gz -> $
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
+IUSE="munge crypt syslog ptl cray static-libs +tk"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -22,13 +23,18 @@ COMMON_DEPEND="
 	sys-devel/gcc
 	sys-devel/make
 	sys-devel/libtool
+	sys-devel/autoconf
+	sys-devel/automake
 	sys-apps/hwloc
 	sys-libs/ncurses
 	dev-lang/perl
 	dev-lang/python
+	tk? (
+		dev-lang/tk:0=
+		dev-lang/tcl:0=
+	)
+	crypt? ( virtual/libcrypt:= )
 	dev-libs/openssl
-	sys-devel/autoconf
-	sys-devel/automake
 	dev-libs/libedit
 	dev-db/postgresql
 	dev-lang/swig
@@ -36,7 +42,9 @@ COMMON_DEPEND="
 	x11-libs/libXt
 	x11-libs/libXext
 	x11-libs/libXft
-	media-libs/fontconfig"
+	media-libs/fontconfig
+	syslog? ( virtual/logger:= )
+	!!games-util/qstat"
 
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND} ${PYTHON_DEPS}
@@ -51,7 +59,18 @@ PATCHES=(
 )
 
 src_configure() {
-	./autogen.sh
+	${S}/autogen.sh
 	append-libs "-ltinfo"
-	./configure --prefix=/opt/pbs --libexecdir=/opt/pbs/libexec
+	econf \
+		$(usex syslog "" "--disable-syslog") \
+		$(usex ptl "--enable-ptl" "") \
+		$(usex cray "--enable-alps" "") \
+		$(use_enable static-libs static) \
+		--enable-shared
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
+	rm -rf ${ED}/usr/unsupported
 }
