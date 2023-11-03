@@ -13,7 +13,7 @@ SRC_URI="https://github.com/openpbs/openpbs/archive/refs/tags/v{$PV}.tar.gz -> $
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="crypt syslog ptl cray static-libs +tk"
+IUSE="crypt syslog ptl cray static-libs"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -29,10 +29,8 @@ COMMON_DEPEND="
 	sys-libs/ncurses
 	dev-lang/perl
 	dev-lang/python
-	tk? (
-		dev-lang/tk:0=
-		dev-lang/tcl:0=
-	)
+	dev-lang/tk:0=
+	dev-lang/tcl:0=
 	crypt? ( virtual/libcrypt:= )
 	dev-libs/openssl
 	dev-libs/libedit
