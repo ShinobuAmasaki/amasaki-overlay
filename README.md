@@ -22,8 +22,9 @@ And then, sync your local repos.
 
 ## Available Packages
 
-### sys-cluster/openpbs
+### sys-cluster
 
 [OpenPBS](https://github.com/openpbs/openpbs) -- An HPC workload manager and job scheduler for desktops, clusters, and clouds.
 
+[OpenMPI v5.0.0](https://www.open-mpi.org/) --  A high-performance message passing library (MPI)
 
