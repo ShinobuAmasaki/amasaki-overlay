@@ -9,7 +9,8 @@ inherit cuda fortran-2 multilib-minimal
 
 IUSE_OPENMPI_RM="
    openmpi_rm_pbs
-   openmpi_rm_slurm"
+   openmpi_rm_slurm
+"
 
 DESCRIPTION="A high-performance message passing library (MPI)"
 HOMEPAGE="https://www.open-mpi.org"
@@ -18,8 +19,8 @@ SRC_URI="https://download.open-mpi.org/release/open-mpi/v$(ver_cut 1-2)/openmpi-
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cma cuda cxx +fortran ipv6 libompitrace peruse romio valgrind prrte doc
-	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
+IUSE="cma cuda cxx +fortran ipv6 peruse romio valgrind doc
+	${IUSE_OPENMPI_RM}} "
 
 REQUIRED_USE="
    openmpi_rm_slurm? ( !openmpi_rm_pbs )
@@ -29,21 +30,26 @@ RDEPEND="
    !sys-cluster/mpich
    !sys-cluster/mpich2
    !sys-cluster/nullmpi
-   >=dev-libs/libevent-2.0.22:=[${MULTILIB_USEDEP},threads(+)]
-   dev-libs/libltdl:0[${MULTILIB_USEDEP}]
-   >=sys-apps/hwloc-2.0.2:=[${MULTILIB_USEDEP}]
    >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
-   >=sys-cluster/pmix-4.2.7
    cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
    openmpi_rm_pbs? ( sys-cluster/openpbs )
-   openmpi_rm_slurm? ( sys-cluster/slurm )
-	doc? (
+   openmpi_rm_slurm? ( sys-cluster/slurm )"
+
+
+BDEPEND="
+	>=sys-cluster/pmix-4.2.7
+	>=sys-cluster/prrte-3.0.2
+	>=dev-libs/libevent-2.0.22:=[${MULTILIB_USEDEP},threads(+)]
+   dev-libs/libltdl:0[${MULTILIB_USEDEP}]
+   >=sys-apps/hwloc-2.0.2:=[${MULTILIB_USEDEP}]
+		doc? (
 		dev-python/sphinx
 		dev-python/sphinx-rtd-theme
 		dev-python/recommonmark )"
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND} ${BDEPEND}
    valgrind? ( dev-util/valgrind )"
+
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/mpi.h
