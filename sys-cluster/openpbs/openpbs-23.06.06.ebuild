@@ -21,10 +21,10 @@ COMMON_DEPEND="
 	!sys-cluster/torque
 	!sys-cluster/slurm
 	sys-devel/gcc
-	sys-devel/make
-	sys-devel/libtool
-	sys-devel/autoconf
-	sys-devel/automake
+	dev-build/make
+	dev-build/libtool
+	dev-build/autoconf
+	dev-build/automake
 	sys-apps/hwloc
 	sys-libs/ncurses
 	dev-lang/perl
