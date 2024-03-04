@@ -8,7 +8,7 @@ inherit flag-o-matic python-r1
 
 DESCRIPTION="An HPC workload manager and job scheduler for desktops, clusters, and clouds."
 HOMEPAGE="https://www.openpbs.org/"
-SRC_URI="https://github.com/openpbs/openpbs/archive/refs/tags/v{$PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/openpbs/openpbs/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
