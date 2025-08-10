@@ -110,7 +110,7 @@ src_configure() {
 		#   of Open MPI.
 		--disable-heterogeneous
 
-		$(use_enable cxx mpi-cxx)
+		# $(use_enable cxx mpi-cxx) #DELETED
 		$(use_enable ipv6)
 		$(use_enable peruse)
 		$(use_enable romio io-romio)
