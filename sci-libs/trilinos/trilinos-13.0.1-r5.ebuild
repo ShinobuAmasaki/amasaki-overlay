@@ -125,10 +125,11 @@ src_configure() {
 		-DTrilinos_ENABLE_Ifpack=ON
 		-DTrilinos_ENABLE_AztecOO=ON
 		-DTrilinos_ENABLE_Belos=ON
-		-DTrilinos_ENABLE_Phalanx=ON
-		-DPhalanx_EXPLICIT_TEMPLATE_INSTANTIATION=ON
+		-DTrilinos_ENABLE_NOX=ON
 		-DTrilinos_ENABLE_OpenMP="$(usex openmp)"
 		-DTrilinos_ENABLE_Pamgen=ON
+		-DTrilinos_ENABLE_Phalanx=ON
+		-DPhalanx_EXPLICIT_TEMPLATE_INSTANTIATION=ON
 		-DTrilinos_ENABLE_PyTrilinos=OFF
 		-DTrilinos_ENABLE_SEACASChaco=OFF
 		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
