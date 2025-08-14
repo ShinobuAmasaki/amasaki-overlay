@@ -99,11 +99,11 @@ src_configure() {
 
 	local mycxxflags=""
 	if has_version ">=sys-devel/gcc-15"; then
-		mycxxflags+="-std=c++14 -include cstdint -Wno-template-body"
+		mycxxflags+="-include cstdint -Wno-template-body"
 	elif has_version ">=sys-devel/gcc-14"; then
-		mycxxflags+="-std=c++14 -include cstdint"
+		mycxxflags+="-include cstdint"
 	else
-		mycxxflags+="-std=c++14"
+		mycxxflags+="-include cstdint"
 	fi
 
 	local mycmakeargs=(
@@ -179,6 +179,7 @@ src_configure() {
 		-DTPL_ENABLE_yaml-cpp="$(usex yaml)"
 		-DTPL_ENABLE_Zlib="$(usex zlib)"
 		-DCMAKE_C_FLAGS="-std=c11"
+		-DCMAKE_CXX_STANDARD=14
 		-DCMAKE_CXX_FLAGS="${mycxxflags}"
 		-DCMAKE_Fortran_FLAGS="-std=legacy"
 	)
