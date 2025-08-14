@@ -1,6 +1,8 @@
---- Registrar.C.original	2025-08-14 13:05:09.007968372 +0900
-+++ Registrar.C	2025-08-14 13:04:59.657572595 +0900
-@@ -517,8 +517,8 @@
+diff --git a/packages/pamgen/rtcompiler/Registrar.C b/packages/pamgen/rtcompiler/Registrar.C
+index c5c63a8139f..b257abe90e8 100644
+--- a/packages/pamgen/rtcompiler/Registrar.C
++++ b/packages/pamgen/rtcompiler/Registrar.C
+@@ -517,8 +517,8 @@ double GeneralizedCompleteEllipticIntegral::execute(Value** args)
    // See Derby and Olbert, "Cylindrical magnets and ideal solenoids," Am. J. Phys. 78, pp. 229-235, 2010.
    // C(kc,p,c,s) = c *R_F(0,kc^2,1) + 1/3 * (s-p*c) * R_J(0,kc^2,1,p)
    double kc2 = args[0]->getValue() * args[0]->getValue();

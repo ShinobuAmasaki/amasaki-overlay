@@ -67,6 +67,7 @@ S="${WORKDIR}/Trilinos-${PN}-release-${MY_PV}"
 
 PATCHES=(
 	"${WORKDIR}"/patches
+	"${FILESDIR}"/${PN}-13.0.1-boost-1.88-pamgen-fix.patch
 )
 
 pkg_pretend() {
@@ -95,6 +96,16 @@ trilinos_conf() {
 }
 
 src_configure() {
+
+	local mycxxflags=""
+	if has_version ">=sys-devel/gcc-15"; then
+		mycxxflags+="-std=c++14 -include cstdint -Wno-template-body"
+	elif has_version ">=sys-devel/gcc-14"; then
+		mycxxflags+="-std=c++14 -include cstdint"
+	else
+		mycxxflags+="-std=c++14"
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"
@@ -123,8 +134,8 @@ src_configure() {
 		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
 		-DTrilinos_ENABLE_SEACASExodus="$(usex netcdf)"
 		-DTrilinos_ENABLE_SEACAS=OFF
-		-DTrilinos_ENABLE_ADELUS=OFF
 		-DTrilinos_ENABLE_TESTS="$(usex test)"
+		-DTrilinos_ENABLE_Zoltan=ON
 		-DTPL_ENABLE_BinUtils=OFF
 		-DTPL_ENABLE_BLAS=ON
 		-DTPL_ENABLE_LAPACK=ON
@@ -167,9 +178,8 @@ src_configure() {
 		-DTPL_ENABLE_X11="$(usex X)"
 		-DTPL_ENABLE_yaml-cpp="$(usex yaml)"
 		-DTPL_ENABLE_Zlib="$(usex zlib)"
-		-DTPL_ENABLE_Zoltan=ON
 		-DCMAKE_C_FLAGS="-std=c11"
-		-DCMAKE_CXX_FLAGS="-std=c++14 -include cstdint -Wno-template-body"
+		-DCMAKE_CXX_FLAGS="${mycxxflags}"
 		-DCMAKE_Fortran_FLAGS="-std=legacy"
 	)
 
