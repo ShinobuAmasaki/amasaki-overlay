@@ -131,10 +131,13 @@ src_configure() {
 		-DTrilinos_ENABLE_Phalanx=ON
 		-DPhalanx_EXPLICIT_TEMPLATE_INSTANTIATION=ON
 		-DTrilinos_ENABLE_PyTrilinos=OFF
+		-DTrilinos_ENABLE_SEACAS=ON
+		-DTrilinos_ENABLE_SEACASPLT=OFF
+		-DTrilinos_ENABLE_SEACASBlot=OFF
+		-DTrilinos_ENABLE_SEACASFastq=OFF
 		-DTrilinos_ENABLE_SEACASChaco=OFF
 		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
 		-DTrilinos_ENABLE_SEACASExodus="$(usex netcdf)"
-		-DTrilinos_ENABLE_SEACAS=OFF
 		-DTrilinos_ENABLE_TESTS="$(usex test)"
 		-DTrilinos_ENABLE_Zoltan=ON
 		-DTPL_ENABLE_BinUtils=OFF
