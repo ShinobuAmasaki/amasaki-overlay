@@ -125,6 +125,7 @@ src_configure() {
 		-DTrilinos_ENABLE_Ifpack=ON
 		-DTrilinos_ENABLE_AztecOO=ON
 		-DTrilinos_ENABLE_Belos=ON
+		-DTrilinos_ENABLE_Kokkos=ON
 		-DTrilinos_ENABLE_NOX=ON
 		-DTrilinos_ENABLE_OpenMP="$(usex openmp)"
 		-DTrilinos_ENABLE_Pamgen=ON
@@ -182,10 +183,10 @@ src_configure() {
 		-DTPL_ENABLE_X11="$(usex X)"
 		-DTPL_ENABLE_yaml-cpp="$(usex yaml)"
 		-DTPL_ENABLE_Zlib="$(usex zlib)"
-		-DCMAKE_C_FLAGS="-std=c11"
+		-DCMAKE_C_FLAGS="-std=c11 $(usex openmp "-fopenmp")"
 		-DCMAKE_CXX_STANDARD=14
-		-DCMAKE_CXX_FLAGS="${mycxxflags}"
-		-DCMAKE_Fortran_FLAGS="-std=legacy"
+		-DCMAKE_CXX_FLAGS="${mycxxflags} $(usex openmp "-fopenmp")"
+		-DCMAKE_Fortran_FLAGS="-std=legacy $(usex openmp "-fopenmp")"
 	)
 
 	use eigen && \
