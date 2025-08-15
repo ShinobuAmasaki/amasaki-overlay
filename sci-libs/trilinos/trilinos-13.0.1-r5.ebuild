@@ -133,10 +133,10 @@ src_configure() {
 		-DPhalanx_EXPLICIT_TEMPLATE_INSTANTIATION=ON
 		-DTrilinos_ENABLE_PyTrilinos=OFF
 		-DTrilinos_ENABLE_SEACAS=ON
-		-DTrilinos_ENABLE_SEACASPLT=OFF
-		-DTrilinos_ENABLE_SEACASBlot=OFF
-		-DTrilinos_ENABLE_SEACASFastq=OFF
-		-DTrilinos_ENABLE_SEACASChaco=OFF
+		# -DTrilinos_ENABLE_SEACASPLT=OFF
+		# -DTrilinos_ENABLE_SEACASBlot=OFF
+		# -DTrilinos_ENABLE_SEACASFastq=OFF
+		# -DTrilinos_ENABLE_SEACASChaco=OFF
 		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
 		-DTrilinos_ENABLE_SEACASExodus="$(usex netcdf)"
 		-DTrilinos_ENABLE_TESTS="$(usex test)"
@@ -183,10 +183,10 @@ src_configure() {
 		-DTPL_ENABLE_X11="$(usex X)"
 		-DTPL_ENABLE_yaml-cpp="$(usex yaml)"
 		-DTPL_ENABLE_Zlib="$(usex zlib)"
-		-DCMAKE_C_FLAGS="-std=c11 $(usex openmp "-fopenmp")"
+		-DCMAKE_C_FLAGS="-std=c11 $(usex openmp '-fopenmp' '')"
 		-DCMAKE_CXX_STANDARD=14
-		-DCMAKE_CXX_FLAGS="${mycxxflags} $(usex openmp "-fopenmp")"
-		-DCMAKE_Fortran_FLAGS="-std=legacy $(usex openmp "-fopenmp")"
+		-DCMAKE_CXX_FLAGS="${mycxxflags} $(usex openmp '-fopenmp' '')"
+		-DCMAKE_Fortran_FLAGS="-std=legacy $(usex openmp '-fopenmp' '')"
 	)
 
 	use eigen && \
